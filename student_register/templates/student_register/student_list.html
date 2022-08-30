@@ -1,0 +1,56 @@
+{% extends 'student_register/base.html' %} {% block container %}
+
+<table class="table table-striped ">
+  <thead class="font-weight-bold border-top-0">
+    <tr>
+      <td scope="col" class="">Full Name</td>
+      <td scope="col">Mobile</td>
+      <td scope="col">Path</td>
+      <td >
+        <button class="btn btn-danger">
+            <a href="{% url 'add' %}" class="text-white" >
+                <i class="fas fa-plus"></i>Add New
+            </a> 
+            
+        </button>
+        
+      </td>
+    </tr>
+  </thead>
+  <tbody>
+    {% for i in students %}
+    <tr>
+        <td class="fw-4">{{i.full_name | upper}}</td>
+        <td>{{i.phone_number}}</td>
+        <td>{{i.path}}</td>
+        <td>
+             <a href="{% url 'update' i.id %}" class="btn text-secondary px-2">
+                <i class="far fa-edit fa-lg"></i>
+             </a>
+             <form action="{% url 'delete' i.id %}" method="POST" class="d-inline bg-white" >
+                {% csrf_token %}
+                <button class="border-0 rounded-3" >
+                    <i class="far fa-trash-alt text-danger " ></i>
+                 </button>
+             </form>
+            
+           
+           
+
+        </td>
+        
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% comment %} <nav aria-label="Page navigation example">
+    <ul class="pagination">
+      <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+      <li class="page-item"><a class="page-link" href="#">1</a></li>
+      <li class="page-item"><a class="page-link" href="#">2</a></li>
+      <li class="page-item"><a class="page-link" href="#">3</a></li>
+      <li class="page-item"><a class="page-link" href="#">Next</a></li>
+    </ul>
+  </nav> {% endcomment %}
+
+{% endblock container %}

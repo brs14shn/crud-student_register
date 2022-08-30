@@ -1,0 +1,25 @@
+{% extends 'student_register/base.html' %} {% block container %}
+
+<h3 class="text-center">Student Form</h1>
+<div class="container">
+  <form action="" method="POST" class="px-3">
+    {% csrf_token %} {{form.as_p}} 
+
+    <div class="row">
+      <div class="col-md-8">
+        <button type="submit" class="btn btn-success btn-block">
+          <i class="fas fa-database"></i>
+          Submit
+        </button>
+      </div>
+      <div class="col-md-4">
+        <a href="{% url 'list' %}" class="btn btn-secondary btn-block">
+          <i class="fas fa-stream"></i>
+          Back to List
+        </a>
+      </div>
+    </div>
+  </form>
+</div>
+
+{% endblock container %}
